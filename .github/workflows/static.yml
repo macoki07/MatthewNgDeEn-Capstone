@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Node
         uses: actions/setup-node@v4
+        working-directory: MatthewNgDeEn-Capstone
         with:
           node-version: 20
           cache: 'npm'
@@ -40,6 +41,7 @@ jobs:
         working-directory: MatthewNgDeEn-Capstone
       - name: Build
         run: npm run build
+        working-directory: MatthewNgDeEn-Capstone
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
