@@ -30,25 +30,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node
         uses: actions/setup-node@v4
-        working-directory: MatthewNgDeEn-Capstone
         with:
           node-version: 20
           cache: 'npm'
+          cache-dependency-path: MatthewNgDeEn-Capstone/package-lock.json  # Ensures correct caching
+
+      - name: Verify Lock File
+        run: ls -la MatthewNgDeEn-Capstone  # Debug: Check if package-lock.json exists
+
       - name: Install dependencies
         run: npm ci
         working-directory: MatthewNgDeEn-Capstone
+
       - name: Build
         run: npm run build
         working-directory: MatthewNgDeEn-Capstone
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist folder
-          path: '/MatthewNgDeEn-Capstone/dist'
+          path: MatthewNgDeEn-Capstone/dist  # Removed the leading '/'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
