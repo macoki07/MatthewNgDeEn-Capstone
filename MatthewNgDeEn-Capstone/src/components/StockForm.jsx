@@ -1,8 +1,6 @@
-import { useState, useContext } from "react";
-import { StockContext } from "../contexts/StockContext";
+import { useState } from "react";
 
-const StockForm = () => {
-  const { addStock } = useContext(StockContext);
+const StockForm = ({ setStocks }) => {
   const [formData, setFormData] = useState({
     symbol: "",
     quantity: "",
@@ -10,22 +8,18 @@ const StockForm = () => {
   });
 
   const handleChange = (e) => {
-    let { name, value } = e.target;
-    if (name === "symbol") value = value.toUpperCase();
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const { symbol, quantity, purchasePrice } = formData;
-
-    if (!symbol || !quantity || !purchasePrice) return;
-    if (quantity <= 0 || purchasePrice <= 0) {
-      alert("Quantity and Purchase Price must be positive numbers!");
-      return;
-    }
-
-    await addStock(symbol, parseFloat(quantity), parseFloat(purchasePrice));
+    if (!formData.symbol || !formData.quantity || !formData.purchasePrice) return;
+    
+    setStocks((prevStocks) => [
+      ...prevStocks, 
+      { ...formData, currentPrice: Math.random() * 200 }
+    ]);
+    
     setFormData({ symbol: "", quantity: "", purchasePrice: "" });
   };
 
