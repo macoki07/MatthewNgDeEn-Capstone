@@ -32,7 +32,7 @@ This project is a **stock tracker** built using **ReactJS** and **Tailwind CSS**
    ```  
 3. Create a `.env` file in the root directory and add your **AlphaVantage API Key**:  
    ```
-   ALPHA_VANTAGE_API_KEY=your_api_key_here
+   ALPHAVANTAGE_API_KEY=your_api_key_here
    ```  
 4. Start the development server:  
    ```sh
