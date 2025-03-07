@@ -24,7 +24,7 @@ This project is a **stock tracker** built using **ReactJS** and **Tailwind CSS**
 1. Clone the repository:  
    ```sh
    git clone https://github.com/MatthewNgDeEn/MatthewNgDeEn-Capstone.git
-   cd MatthewNgDeEn-Capstone
+   cd MatthewNgDeEn-Capstone/MatthewNgDeEn-Capstone
    ```  
 2. Install dependencies:  
    ```sh
